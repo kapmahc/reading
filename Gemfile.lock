@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    reading (0.1.0)
+    reading (2016.11.22)
       rails (~> 5.0.0, >= 5.0.0.1)
 
 GEM
@@ -115,4 +115,4 @@ DEPENDENCIES
   sqlite3
 
 BUNDLED WITH
-   1.13.1
+   1.13.6
