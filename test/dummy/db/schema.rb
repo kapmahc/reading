@@ -44,13 +44,13 @@ ActiveRecord::Schema.define(version: 20161123182011) do
   end
 
   create_table "reading_notes", force: :cascade do |t|
-    t.string   "flag",            limit: 8,             null: false
-    t.text     "body",                                  null: false
-    t.integer  "vote",                      default: 0, null: false
+    t.string   "flag",            limit: 8, default: "markdown", null: false
+    t.text     "body",                                           null: false
+    t.integer  "vote",                      default: 0,          null: false
     t.integer  "reading_book_id"
     t.integer  "user_id"
-    t.datetime "created_at",                            null: false
-    t.datetime "updated_at",                            null: false
+    t.datetime "created_at",                                     null: false
+    t.datetime "updated_at",                                     null: false
     t.index ["flag"], name: "index_reading_notes_on_flag"
     t.index ["reading_book_id"], name: "index_reading_notes_on_reading_book_id"
     t.index ["user_id"], name: "index_reading_notes_on_user_id"

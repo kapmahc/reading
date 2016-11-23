@@ -13,7 +13,6 @@ module Reading
       @note = Note.new params.require(:note).permit(:body, :reading_book_id)
       authorize @note
       @note.user = current_user
-      @note.flag = 'markdown'
 
       if @note.save
         redirect_to latest_notes_path
