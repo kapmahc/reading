@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20161123182011) do
     t.string   "author",                   null: false
     t.string   "publisher",                null: false
     t.string   "title",                    null: false
-    t.string   "flag",                     null: false
+    t.string   "version",                  null: false
     t.string   "lang",                     null: false
     t.string   "subject",                  null: false
     t.string   "file",                     null: false
@@ -26,21 +26,20 @@ ActiveRecord::Schema.define(version: 20161123182011) do
     t.datetime "updated_at",               null: false
     t.index ["author"], name: "index_reading_books_on_author"
     t.index ["file"], name: "index_reading_books_on_file", unique: true
-    t.index ["flag"], name: "index_reading_books_on_flag"
     t.index ["lang"], name: "index_reading_books_on_lang"
     t.index ["publisher"], name: "index_reading_books_on_publisher"
     t.index ["subject"], name: "index_reading_books_on_subject"
     t.index ["title"], name: "index_reading_books_on_title"
+    t.index ["version"], name: "index_reading_books_on_version"
   end
 
   create_table "reading_favorites", force: :cascade do |t|
-    t.string   "resource_type", null: false
-    t.integer  "resource_id",   null: false
+    t.string   "href",       null: false
+    t.string   "title",      null: false
     t.integer  "user_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-    t.index ["resource_type", "resource_id", "user_id"], name: "idx_reading_favorites_ids", unique: true
-    t.index ["resource_type"], name: "index_reading_favorites_on_resource_type"
+    t.datetime "created_at", null: false
+    t.index ["href", "user_id"], name: "index_reading_favorites_on_href_and_user_id", unique: true
+    t.index ["title"], name: "index_reading_favorites_on_title"
     t.index ["user_id"], name: "index_reading_favorites_on_user_id"
   end
 

@@ -16,7 +16,8 @@ Reading::Engine.routes.draw do
         get 'admin'
       end
     end
-    resources :favorites
+
+    resources :favorites, only: [:index, :create, :destroy]
   end
 
   root 'books#index'
