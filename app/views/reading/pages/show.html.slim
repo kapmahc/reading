@@ -1,1 +1,11 @@
-p class="row" #{raw @body}
+div class="row"
+  div class="col-md-9" #{raw @body}
+  div class="col-md-3"
+    h4
+      = t '.notes'
+      = link_to t('buttons.new'), new_note_path(book_id: @book.id), class:'btn btn-link'
+    hr
+    - @book.notes.order(updated_at: :desc).each do |i|
+      blockquote class="blockquote"
+        p class="mb-0" #{i.body}
+        footer class="blockquote-footer" #{time_ago_in_words i.updated_at}

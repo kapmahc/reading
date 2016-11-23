@@ -1,0 +1,7 @@
+h2
+  = @title = t '.title'
+hr
+= simple_form_for @note do |f|
+  = f.input :reading_book_id, as: :hidden
+  = f.input :body, as: :text
+  = f.button :submit, t('buttons.submit')

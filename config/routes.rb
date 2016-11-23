@@ -4,12 +4,13 @@ Reading::Engine.routes.draw do
   scope '/:locale' do
     get 'pages/:id/*name', to: 'pages#show', as: :page
 
-    resources :notes do
+    resources :notes, except: [:show] do
       collection do
         get 'hot'
         get 'latest'
       end
     end
+
     resources :books, only: [:index, :show, :destroy] do
       collection do
         get 'admin'
@@ -18,5 +19,5 @@ Reading::Engine.routes.draw do
     resources :favorites
   end
 
-  root 'home#index'
+  root 'books#index'
 end

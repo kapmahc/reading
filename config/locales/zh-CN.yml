@@ -7,10 +7,16 @@ zh-CN:
         author: 作者
         subject: 主题
         publisher: 发行商
+      reading/note:
+        updated_at: 更新时间
+        body: 正文
   reading:
     home:
       title: 在线图书
       descriptions: 在线阅读epub格式电子书
+    pages:
+      show:
+        notes: 笔记列表
     books:
       index:
         title: 书籍列表
@@ -24,7 +30,7 @@ zh-CN:
       edit:
         title: 编辑笔记 [%{id}]
       latest:
-        title: 笔记列表
+        title: 最新笔记
       hot:
         title: 热门笔记
     favorites:

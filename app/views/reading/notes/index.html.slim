@@ -1,0 +1,18 @@
+h2
+  = @title = t '.title'
+hr
+= paginate @notes, theme: 'twitter-bootstrap-4'
+
+table class="table table-bordered table-hover"
+  thead
+    tr
+      th #{t 'activerecord.attributes.reading/note.updated_at'}
+      th #{t 'activerecord.attributes.reading/note.body'}
+      th #{t 'buttons.manage'}
+  tbody
+    - @notes.each do |i|
+      tr
+        th scope="row" #{time_ago_in_words i.updated_at}
+        td #{i.body}
+        td
+          = render 'shared/btn-remove', url: note_path(i)
