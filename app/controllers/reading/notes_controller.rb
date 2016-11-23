@@ -6,10 +6,12 @@ module Reading
 
     def new
       @note = Note.new reading_book_id: params[:book_id]
+      authorize @note
     end
 
     def create
       @note = Note.new params.require(:note).permit(:body, :reading_book_id)
+      authorize @note
       @note.user = current_user
       @note.flag = 'markdown'
 
@@ -23,10 +25,12 @@ module Reading
 
     def edit
       @note = Note.find(params[:id])
+      authorize @note
     end
 
     def update
       @note = Note.find(params[:id])
+      authorize @note
       if @note.update(params.require(:note).permit(:body))
         redirect_to latest_notes_path
       else
@@ -37,8 +41,9 @@ module Reading
 
     def destroy
       n = Note.find(params[:id])
-      n.destroy
+      authorize @note
 
+      n.destroy
       redirect_to notes_path
     end
 
@@ -49,7 +54,7 @@ module Reading
       else
         @notes = Note.where(user_id: current_user.id).order(updated_at: :desc).page params[:page]
       end
-
+      render layout: 'dashboard'
     end
 
     def hot

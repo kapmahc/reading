@@ -3,17 +3,20 @@ require 'epub/parser'
 
 module Reading
   class BooksController < ApplicationController
-    before_action :must_admin!, only: [:destroy, :admin]
+
     def index
       @books = Book.order(vote: :desc).page params[:page]
     end
 
     def admin
+      authorize Book.new
       @books = Book.order(updated_at: :desc).page params[:page]
+      render layout: 'dashboard'
     end
 
     def destroy
       bk = Book.find(params[:id])
+      authorize bk
       bk.destroy
 
       redirect_to admin_books_path
