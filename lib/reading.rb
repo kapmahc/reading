@@ -2,13 +2,18 @@ require 'reading/engine'
 
 module Reading
   def Reading.dashboard(user)
+    links = [
+        {label: 'reading.notes.index.title', href: 'notes_path'},
+        {label: 'reading.favorites.index.title', href: 'favorites_path'},
+    ]
+
+    if user.is_admin?
+      links << {label: 'reading.books.index.title', href: 'books_path'}
+    end
+
     {
-        label: 'reading.home.dashboard.title',
-        links: [
-            {label: '111', href: 'root_path'},
-            {label: '222', href: 'root_path'},
-            {label: '333', href: 'root_path'},
-        ]
+        label: 'reading.dashboard.title',
+        links: links,
     }
   end
 end

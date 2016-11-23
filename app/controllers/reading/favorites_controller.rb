@@ -1,9 +1,8 @@
 require_dependency 'reading/application_controller'
 
 module Reading
-  class HomeController < ApplicationController
+  class FavoritesController < ApplicationController
     def index
     end
-
   end
 end

@@ -1,0 +1,26 @@
+zh-CN:
+  reading:
+    home:
+      title: 在线图书
+      descriptions: 在线阅读epub格式电子书
+    books:
+      index:
+        title: 书籍列表
+    notes:
+      index:
+        title: 我的笔记
+      new:
+        title: 添加笔记
+      edit:
+        title: 编辑笔记 [%{id}]
+      latest:
+        title: 笔记列表
+      hot:
+        title: 热门笔记
+    favorites:
+      index:
+        title: 收藏夹
+      new:
+        title: 收藏
+    dashboard:
+      title: 我的阅读
