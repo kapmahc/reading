@@ -1,4 +1,12 @@
 zh-CN:
+  activerecord:
+    attributes:
+      reading/book:
+        updated_at: 录入时间
+        title: 名称
+        author: 作者
+        subject: 主题
+        publisher: 发行商
   reading:
     home:
       title: 在线图书
@@ -6,6 +14,8 @@ zh-CN:
     books:
       index:
         title: 书籍列表
+      admin:
+        title: 书籍管理
     notes:
       index:
         title: 我的笔记

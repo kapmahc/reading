@@ -9,21 +9,25 @@ namespace :reading do
       book = EPUB::Parser.parse(fn)
       meta = book.metadata
 
-      if Reading::Book.where(file: fn).count == 0
-        bk = Reading::Book.new file: fn,
-                             title: meta.title,
-                             author: meta.creators.first.content,
-                             lang: meta.language.content,
-                             version: book.package.version,
-                             publisher: meta.publishers.first.content,
-                             subject: meta.subjects.empty? ? '-' : meta.subjects.first.content,
-                             published_at: meta.date.content
-        bk.author = '-' if bk.author.empty?
-        bk.save
-        unless bk.valid?
-          raise bk.errors.inspect
-        end
+      bk = Reading::Book.where(file: fn).first
+      unless bk
+        bk = Reading::Book.new file: fn
       end
+
+      bk.title= meta.title
+      bk.author= meta.creators.first.content
+      bk.lang= meta.language.content
+      bk.version= book.package.version
+      bk.publisher= meta.publishers.first.content
+      bk.subject= meta.subjects.empty? ? '-' : meta.subjects.first.content
+      bk.published_at= meta.date.content
+      bk.author = '-' if bk.author.empty?
+
+      bk.save
+      unless bk.valid?
+        raise bk.errors.inspect
+      end
+
     end
   end
 

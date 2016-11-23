@@ -7,7 +7,11 @@ Reading::Engine.routes.draw do
         get 'latest'
       end
     end
-    resources :books
+    resources :books, only: [:index, :show, :destroy] do
+      collection do
+        get 'admin'
+      end
+    end
     resources :favorites
   end
 
