@@ -1,6 +1,9 @@
 Reading::Engine.routes.draw do
 
+
   scope '/:locale' do
+    get 'pages/:id/*name', to: 'pages#show', as: :page
+
     resources :notes do
       collection do
         get 'hot'
