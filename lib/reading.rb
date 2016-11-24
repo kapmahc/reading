@@ -8,7 +8,7 @@ module Reading
     ]
 
     if user.is_admin?
-      links << {label: 'reading.books.admin.title', href: 'admin_books_path'}
+      links << {label: 'reading.books.index.title', href: 'books_path'}
     end
 
     {

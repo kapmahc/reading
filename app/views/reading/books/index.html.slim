@@ -3,12 +3,23 @@ h2
 hr
 = paginate @books, theme: 'twitter-bootstrap-4'
 
-div class="row"
-  -@books.each do |i|
-    div class="col-md-4"
-      div class="card"
-        div class="card-block"
-          h4 class="card-title"
-            = link_to i.title, book_path(i)
-          p class="card-text" #{i.author} #{i.subject}
-          = link_to t('buttons.view'), book_path(i), class: 'btn btn-secondary'
+table class="table table-bordered table-hover"
+  thead
+    tr
+      th #{t 'activerecord.attributes.reading/book.updated_at'}
+      th #{t 'activerecord.attributes.reading/book.title'}
+      th #{t 'activerecord.attributes.reading/book.author'}
+      th #{t 'activerecord.attributes.reading/book.publisher'}
+      th #{t 'activerecord.attributes.reading/book.subject'}
+      th #{t 'buttons.manage'}
+  tbody
+    - @books.each do |i|
+      tr
+        th scope="row" #{time_ago_in_words i.updated_at}
+        td
+          = link_to i.title, book_path(i), target: :_blank
+        td #{i.author}
+        td #{i.publisher}
+        td #{i.subject}
+        td
+          = render 'shared/btn-remove', url: book_path(i)

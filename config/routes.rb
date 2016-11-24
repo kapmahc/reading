@@ -13,12 +13,12 @@ Reading::Engine.routes.draw do
 
     resources :books, only: [:index, :show, :destroy] do
       collection do
-        get 'admin'
+        get 'hot'
       end
     end
 
     resources :favorites, only: [:index, :create, :destroy]
   end
 
-  root 'books#index'
+  root 'books#hot'
 end

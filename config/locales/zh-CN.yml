@@ -18,9 +18,9 @@ zh-CN:
       show:
         notes: 笔记列表
     books:
-      index:
+      hot:
         title: 书籍列表
-      admin:
+      index:
         title: 书籍管理
     notes:
       index:

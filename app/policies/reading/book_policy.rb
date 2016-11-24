@@ -1,7 +1,7 @@
 module Reading
   class BookPolicy < ApplicationPolicy
 
-    def admin?
+    def index?
       !user.nil? && user.is_admin?
     end
 

@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    reading (2016.11.22)
+    reading (2016.11.23)
       epub-parser
       rails (~> 5.0.0, >= 5.0.0.1)
 

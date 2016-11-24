@@ -4,11 +4,11 @@ require 'epub/parser'
 module Reading
   class BooksController < ApplicationController
 
-    def index
+    def hot
       @books = Book.order(vote: :desc).page params[:page]
     end
 
-    def admin
+    def index
       authorize Book.new
       @books = Book.order(updated_at: :desc).page params[:page]
       render layout: 'dashboard'
@@ -19,7 +19,7 @@ module Reading
       authorize bk
       bk.destroy
 
-      redirect_to admin_books_path
+      redirect_to books_path
     end
 
 
