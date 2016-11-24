@@ -13,7 +13,7 @@ zh-CN:
   reading:
     home:
       title: 在线图书
-      descriptions: 在线阅读epub格式电子书
+      description: 在线阅读epub格式电子书
     pages:
       show:
         notes: 笔记列表
